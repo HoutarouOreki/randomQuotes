@@ -18,6 +18,7 @@
       console.log("READY");
       $("#generateButton").on("click", function() {
         console.log("CLICK");
+        $("#quoteContainer").html("I'm really bad at this");
         $.getJSON("http://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=jsonp&jsonp=?", function(json) {
           $("#quoteContainer").html(JSON.stringify(json));
         })
@@ -31,7 +32,7 @@
     </div>
     <hr>
     <div id="quoteContainer">
-      Someone once said.
+      Placeholder ayy
     </div>
     <hr>
     <div id="buttonContainer">
