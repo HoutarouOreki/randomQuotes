@@ -1,0 +1,43 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Random Quotes</title>
+  <meta name="description" content="Random Quotes">
+  <meta name="author" content="Doge">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <script src="jquery.js"></script>
+  <script>
+    $(document).ready(function() {
+      console.log("READY");
+      $("#generateButton").on("click", function() {
+        console.log("CLICK");
+        $.getJSON("http://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=jsonp&jsonp=?", function(json) {
+          $("#quoteContainer").html(JSON.stringify(json));
+        })
+      });
+    })
+  </script>
+
+  <div id="mainDiv">
+    <div id="title">
+      <h1>Random quotes</h1>
+    </div>
+    <hr>
+    <div id="quoteContainer">
+      Someone once said.
+    </div>
+    <hr>
+    <div id="buttonContainer">
+      <button type="button" id="generateButton">Generate quote</button>
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,20 @@
+html {
+  margin-top: 20px;
+  background-color: #FFF;
+}
+
+body {
+  max-width: 500px;
+  margin: auto;
+  background-color: #EFEFEF;
+}
+
+hr {
+  margin: 40px;
+}
+
+#mainDiv {
+  text-align: center;
+  padding: 10px;
+  padding-bottom: 25px;
+}
