@@ -13,17 +13,26 @@
 
 <body>
   <script src="jquery.js"></script>
+  <script src="javascript.js"></script>
   <script>
-    $(document).ready(function() {
-      console.log("READY");
-      $("#generateButton").on("click", function() {
-        console.log("CLICK");
-        $("#quoteContainer").html("I'm really bad at this");
-        $.getJSON("http://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=jsonp&jsonp=?", function(json) {
-          $("#quoteContainer").html(JSON.stringify(json));
-        })
-      });
-    })
+  var url = "http://api.forismatic.com/api/1.0/?method=getQuote&key=457653&format=jsonp&lang=en&jsonp=?";
+  var getQuote = function(data) {
+    $("#quoteContainer").text(data.quoteText);
+    var quot = 'https://twitter.com/intent/tweet?text=' + data.quoteText + ' Author ' + data.quoteAuthor +' @Rafase282 goo.gl/2h0NHo';
+    if (data.quoteAuthor === '') {
+      data.quoteAuthor = 'Unknown';
+    }
+    $(".author-text").text('Author: ' + data.quoteAuthor);
+    $(".twitter-share-button").attr("href", quot);
+  };
+  $(document).ready(function() {
+    $.getJSON(url, getQuote, 'jsonp');
+
+  });
+  $("#buttonContainer").click(function() {
+    $.getJSON(url, getQuote, 'jsonp');
+  });
+
   </script>
 
   <div id="mainDiv">
@@ -36,7 +45,7 @@
     </div>
     <hr>
     <div id="buttonContainer">
-      <button type="button" id="generateButton">Generate quote</button>
+      <button id="generateButton">Generate quote</button>
     </div>
   </div>
 
