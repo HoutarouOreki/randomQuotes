@@ -13,26 +13,25 @@
 
 <body>
   <script src="jquery.js"></script>
-  <script src="javascript.js"></script>
   <script>
-  var url = "http://api.forismatic.com/api/1.0/?method=getQuote&key=457653&format=jsonp&lang=en&jsonp=?";
-  var getQuote = function(data) {
-    $("#quoteContainer").text(data.quoteText);
-    var quot = 'https://twitter.com/intent/tweet?text=' + data.quoteText + ' Author ' + data.quoteAuthor +' @Rafase282 goo.gl/2h0NHo';
-    if (data.quoteAuthor === '') {
-      data.quoteAuthor = 'Unknown';
-    }
-    $(".author-text").text('Author: ' + data.quoteAuthor);
-    $(".twitter-share-button").attr("href", quot);
+  function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
   };
-  $(document).ready(function() {
-    $.getJSON(url, getQuote, 'jsonp');
-
-  });
-  $("#buttonContainer").click(function() {
-    $.getJSON(url, getQuote, 'jsonp');
-  });
-
+  var quote = [
+    "Quote 1",
+    "Quote 2",
+    "Quote 3"
+  ]
+  var number = 0;
+    $(document).ready(function() {
+      console.log("READY");
+      $("#generateButton").on("click", function() {
+        console.log("CLICK");
+        var number = getRandomInt(0, quote.length - 1);
+        console.log("RANDINT: " + number);
+        $("#quoteContainer").html(quote[number]);
+      });
+    })
   </script>
 
   <div id="mainDiv">
@@ -45,7 +44,7 @@
     </div>
     <hr>
     <div id="buttonContainer">
-      <button id="generateButton">Generate quote</button>
+      <button type="button" id="generateButton">Generate quote</button>
     </div>
   </div>
 
