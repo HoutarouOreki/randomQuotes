@@ -14,21 +14,24 @@
 <body>
   <script src="jquery.js"></script>
   <script>
-  function getRandomInt(min, max, number) {
-    var randNum = 0;
-    do {
-      var randNum = Math.floor(Math.random() * (max - min + 1)) + min;
-    } while (randNum === number);
-    return randNum;
-  };
-  var quote = [
-    "Quote 1",
-    "Quote 2",
-    "Quote 3"
-  ]
-  var number = 0;
+    function getRandomInt(min, max, number) {
+      var randNum = 0;
+      do {
+        var randNum = Math.floor(Math.random() * (max - min + 1)) + min;
+      } while (randNum === number);
+      return randNum;
+    };
+    var quote = [
+      "Quote 1",
+      "Quote 2",
+      "Quote 3"
+    ]
+    var number = 0;
     $(document).ready(function() {
       console.log("READY");
+      $("#buttonTweetLink").on("click", function() {
+        $("#buttonTweetLink").attr("href", 'https://twitter.com/intent/tweet?text=' + quote[number]);
+      });
       $("#generateButton").on("click", function() {
         console.log("CLICK");
         number = getRandomInt(0, quote.length - 1, number);
@@ -49,6 +52,11 @@
     <hr>
     <div id="buttonContainer">
       <button type="button" id="generateButton">Generate quote</button>
+    </div>
+    <div id="buttonTweet">
+      <a id="buttonTweetLink"
+      href="https://twitter.com/intent/tweet?text=">
+      Tweet this quote</a>
     </div>
   </div>
 
