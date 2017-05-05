@@ -14,8 +14,12 @@
 <body>
   <script src="jquery.js"></script>
   <script>
-  function getRandomInt(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+  function getRandomInt(min, max, number) {
+    var randNum = 0;
+    do {
+      var randNum = Math.floor(Math.random() * (max - min + 1)) + min;
+    } while (randNum === number);
+    return randNum;
   };
   var quote = [
     "Quote 1",
@@ -27,7 +31,7 @@
       console.log("READY");
       $("#generateButton").on("click", function() {
         console.log("CLICK");
-        var number = getRandomInt(0, quote.length - 1);
+        number = getRandomInt(0, quote.length - 1, number);
         console.log("RANDINT: " + number);
         $("#quoteContainer").html(quote[number]);
       });
