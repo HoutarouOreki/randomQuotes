@@ -7,12 +7,14 @@
   <title>Random Quotes</title>
   <meta name="description" content="Random Quotes">
   <meta name="author" content="Doge">
-
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
   <script src="jquery.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   <script>
     function getRandomInt(min, max, number) {
       var randNum = 0;
@@ -54,27 +56,29 @@
     })
   </script>
 
-  <div id="mainDiv">
-    <div id="title">
-      <h1>Random quotes</h1>
-    </div>
-    <hr>
-    <div id="quoteContainer">
-      Placeholder ayy
-    </div>
-    <div id="authorContainer">
-      Another placeholder lol xD
-    </div>
-    <hr>
-    <div id="buttonContainer">
-      <button type="button" id="generateButton">Generate quote</button>
-      <a id="buttonTweetLink"
-      href="https://twitter.com/intent/tweet?text=">
-      <button type="button">Tweet this quote</button></a>
-    </div>
-    <hr>
-    <div id="fotterKappa">
-      <a style="color: #AAA">Jarosław Zgierski 2017</a>
+  <div id="mainDiv" class="jumbotron">
+    <div class="container">
+      <div class="page-header">
+        <h2><small>Doge/</small>Random Quotes</h2>
+      </div>
+      <hr>
+      <div>
+        <p id="quoteContainer">Placeholder ayy</p>
+      </div>
+      <div id="authorContainer">
+        Another placeholder lol xD
+      </div>
+      <hr>
+      <div id="buttonContainer">
+        <button type="button" id="generateButton">Generate quote</button>
+        <a id="buttonTweetLink"
+        href="https://twitter.com/intent/tweet?text=">
+        <button type="button">Tweet this quote</button></a>
+      </div>
+      <hr>
+      <div id="fotterKappa" class="text-muted">
+        Jarosław Zgierski 2017
+      </div>
     </div>
   </div>
 
