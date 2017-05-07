@@ -41,3 +41,8 @@ h2 {
   padding-left: 30px;
   padding-right: 30px;
 }
+
+@font-face {
+  font-family: Japanese;
+  src: url('Japanese.otf');
+}
