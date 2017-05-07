@@ -19,29 +19,105 @@
   <script src="jquery.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   <script>
+    var usedQuotes = [];
+    var timesSeen = 0;
+    function arrayContains(randNum, usedQuotes) {
+      for (var i = usedQuotes.length + 1; i >= 0; i--) {
+        if (randNum === usedQuotes[i])
+          return true;
+      }
+    }
     function getRandomInt(min, max, number) {
       var randNum = 0;
       do {
         var randNum = Math.floor(Math.random() * (max - min + 1)) + min;
-      } while (randNum === number);
+      } while (arrayContains(randNum, usedQuotes));
+      usedQuotes.push(randNum);
+      if (usedQuotes.length === quote.length) {
+        console.log("ALL QUOTES USED");
+        $("#alertSeenAll").css("opacity", "1");
+        timesSeen++;
+        if (timesSeen > 1) {
+          if (timesSeen < 10) {
+            $("#alertSeenAll").html("You've seen all the quotes " + timesSeen + " times.")
+          }
+          else if (timesSeen < 15) {
+            $("#alertSeenAll").html("Nandato?! You've seen all the quotes " + timesSeen + " times!")
+          }
+          else if (timesSeen < 20) {
+            $("#alertSeenAll").html("KOITSU!! You've seen all of them " + timesSeen + " times already! The counter hits 20, I'm launching a CYBERNUKE at your browser!!")
+          }
+          else if (timesSeen === 20) {
+            $("#alertSeenAll").html("CYBERNUKED")
+            var CYBERNUKE = 0;
+            do {
+              CYBERNUKE++;
+            } while(true);
+          }
+        }
+        usedQuotes = [];
+      }
       return randNum;
     };
     var quote = [
-      ["Don't cry because it's over, smile because it happened.",
-      "― Dr. Seuss"],
-      ["Two things are infinite: the universe and human stupidity, and I'm not sure about the universe.",
-      "― Albert Einstein"],
-      ["Be who you are and say what you feel, because those who mind don't matter, and those who matter don't mind.",
-      "― Bernard M. Baruch"],
-      ["You know you're in love when you can't fall asleep because reality is finally better than your dreams.",
-      "― Dr. Seuss"],
-      ["Be the change that you wish to see in the world.",
-      "― Mahatma Gandhi"]
+      [
+        "How could you even be 19",
+        "― TheWolfInstinct"
+      ],
+      [
+        "The dead is kinda dead",
+        "― TheWolfInstinct"
+      ],
+      [
+        "delete system48",
+        "― Doge"
+      ],
+      [
+        "I went to coke",
+        "― Doge"
+      ],
+      [
+        "coke of can",
+        "― Doge"
+      ],
+      [
+        "woopwoopwoop much sense very coke",
+        "― Doge"
+      ],
+      [
+        "Auck Fzer",
+        "― Internet"
+      ],
+      [
+        "In ur mom",
+        "― ppy"
+      ],
+      [
+        "Deja Vu! I've just been in this place before.",
+        "― Dave Rodgers"
+      ],
+      [
+        "AKIRAMENAIZO",
+        "– The guy in cold water"
+      ],
+      [
+        "NANI?! BAKANA!!",
+        "– anime"
+      ],
+      [
+        "NANDA TO?!",
+        "– anime"
+      ],
+      [
+        "MASAKA",
+        "– Takeshi Nakazato"
+      ]
     ]
     var number = 0;
     $(document).ready(function() {
       console.log("READY");
       number = getRandomInt(0, quote.length - 1, number);
+      usedQuotes.push(number);
       console.log("INITIAL RANDINT: " + number);
       $("#quoteContainer").html(quote[number][0]);
       $("#authorContainer").html(quote[number][1])
@@ -72,6 +148,9 @@
         <div id="authorContainer">
           Another placeholder lol xD
         </div>
+      </div>
+      <div id="alertSeenAll" class="text-danger" style="opacity: 0">
+        You've seen all the quotes
       </div>
       <hr>
       <div id="buttonContainer">
